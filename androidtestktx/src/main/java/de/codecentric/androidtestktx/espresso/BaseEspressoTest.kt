@@ -1,9 +1,7 @@
 package de.codecentric.androidtestktx.espresso
 
 import android.app.Activity
-import android.support.test.rule.ActivityTestRule
-import de.codecentric.androidtestktx.targetContext
-import org.junit.Before
+import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
 import kotlin.reflect.KClass
 
@@ -22,19 +20,6 @@ abstract class BaseEspressoTest<A : Activity>(
     launchActivity,
     preStartSettings = preStartSettings
   )
-//
-//    @JvmField
-//    @Rule
-//    val trampolineRule = TrampolineSchedulerRule()
-
-  protected val injector: TestAppComponent by lazy { (targetContext.applicationContext as TestApp).testAppComponent }
-
-  abstract fun inject()
-
-  @Before
-  fun initInjection() {
-    inject()
-  }
 
   fun run(apiMock: () -> Unit, test: () -> Unit) {
     apiMock()

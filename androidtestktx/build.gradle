@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion extCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion extMinSdkVersion
+        targetSdkVersion extTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'junit:junit:4.12'
+    implementation 'androidx.test:runner:1.1.0-beta02'
+    implementation 'androidx.test:rules:1.1.0-beta02'
+    // Espresso
+    implementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    implementation 'androidx.test.espresso:espresso-intents:3.1.0-beta02'
+    // add this for webview testing support
+    implementation 'androidx.test.espresso:espresso-web:3.1.0-beta02'
+    implementation 'androidx.test.espresso:espresso-contrib:3.1.0-beta02'
+    // UI Automator tests
+    api 'androidx.test.uiautomator:uiautomator:2.2.0-beta02'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}

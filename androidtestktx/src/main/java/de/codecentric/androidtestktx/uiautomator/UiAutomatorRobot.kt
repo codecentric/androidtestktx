@@ -2,17 +2,14 @@ package de.codecentric.androidtestktx.uiautomator
 
 import android.app.Activity
 import android.content.Intent
-import de.codecentric.androidtestktx.targetContext
+import de.codecentric.androidtestktx.common.testContext
 import de.codecentric.androidtestktx.uiautomator.extensions.appStarts
 import de.codecentric.androidtestktx.uiautomator.extensions.device
 import de.codecentric.androidtestktx.uiautomator.extensions.viewByText
+import de.codecentric.androidtestktx.uiautomator.extensions.waitUntil
 import kotlin.reflect.KClass
 
 abstract class UiAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartActivity: Boolean) {
-
-  protected val injector: TestAppComponent by lazy { (targetContext.applicationContext as TestApp).testAppComponent }
-
-  abstract fun inject()
 
   init {
     if (autoStartActivity) {
@@ -23,9 +20,9 @@ abstract class UiAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartAc
   fun startActivity() {
     improveDeviceStartupConditions()
 
-    val intent = Intent(targetContext, kClass.java)
+    val intent = Intent(testContext, kClass.java)
     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-    targetContext.startActivity(intent)
+    testContext.startActivity(intent)
     device waitUntil appStarts()
   }
 

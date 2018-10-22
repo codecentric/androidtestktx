@@ -1,4 +1,4 @@
-package de.codecentric.androidtestktx
+package de.codecentric.androidtestktx.demo
 
 import android.app.Application
 
