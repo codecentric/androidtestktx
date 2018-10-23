@@ -30,11 +30,11 @@ dependencies {
     implementation 'androidx.test:runner:1.1.0-beta02'
     implementation 'androidx.test:rules:1.1.0-beta02'
     // Espresso
-    implementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
-    implementation 'androidx.test.espresso:espresso-intents:3.1.0-beta02'
+    api 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    api 'androidx.test.espresso:espresso-intents:3.1.0-beta02'
     // add this for webview testing support
-    implementation 'androidx.test.espresso:espresso-web:3.1.0-beta02'
-    implementation 'androidx.test.espresso:espresso-contrib:3.1.0-beta02'
+    api 'androidx.test.espresso:espresso-web:3.1.0-beta02'
+    api 'androidx.test.espresso:espresso-contrib:3.1.0-beta02'
     // UI Automator tests
     api 'androidx.test.uiautomator:uiautomator:2.2.0-beta02'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

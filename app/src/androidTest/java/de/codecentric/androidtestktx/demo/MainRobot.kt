@@ -1,6 +1,9 @@
 package de.codecentric.androidtestktx.demo
 
 import de.codecentric.androidtestktx.demo.ui.MainActivity
+import de.codecentric.androidtestktx.espresso.extensions.itIsDisplayed
+import de.codecentric.androidtestktx.espresso.extensions.verifyThat
+import de.codecentric.androidtestktx.espresso.extensions.viewByText
 import de.codecentric.androidtestktx.uiautomator.UiAutomatorRobot
 import de.codecentric.androidtestktx.uiautomator.extensions.itIsDisplayed
 import de.codecentric.androidtestktx.uiautomator.extensions.verifyThat
@@ -13,11 +16,26 @@ infix fun MainRobot.verifyThat(fn: MainRobotResult.() -> Unit) {
   mainRobotResult.fn()
 }
 
-class MainRobot : UiAutomatorRobot<MainActivity>(MainActivity::class, true)
+class MainRobot : UiAutomatorRobot<MainActivity>(MainActivity::class, true) {
+  fun openList() {
+    val openListBtn = viewById { R.id.activityMainBtnOpenList }
+    openListBtn.click()
+  }
+}
 
 class MainRobotResult {
 
   fun mainButtonIsDisplayed() {
-    viewById { R.id.testComponent } verifyThat { itIsDisplayed() }
+    val openListButton = viewById { R.id.activityMainBtnOpenList }
+    openListButton verifyThat { itIsDisplayed() }
+  }
+
+  fun openListLabelIsDisplayed() {
+    val openListButton = viewByText(R.string.open_list)
+    openListButton verifyThat { itIsDisplayed() }
+  }
+
+  fun listScreenIsOpened() {
+    MainActivity::class verifyThat { itIsDisplayed() }
   }
 }
