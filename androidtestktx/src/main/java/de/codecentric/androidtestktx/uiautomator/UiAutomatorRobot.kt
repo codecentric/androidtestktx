@@ -2,7 +2,7 @@ package de.codecentric.androidtestktx.uiautomator
 
 import android.app.Activity
 import android.content.Intent
-import de.codecentric.androidtestktx.common.testContext
+import de.codecentric.androidtestktx.common.appContext
 import de.codecentric.androidtestktx.uiautomator.extensions.appStarts
 import de.codecentric.androidtestktx.uiautomator.extensions.device
 import de.codecentric.androidtestktx.uiautomator.extensions.viewByText
@@ -20,9 +20,9 @@ abstract class UiAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartAc
   fun startActivity() {
     improveDeviceStartupConditions()
 
-    val intent = Intent(testContext, kClass.java)
+    val intent = Intent(appContext, kClass.java)
     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-    testContext.startActivity(intent)
+    appContext.startActivity(intent)
     device waitUntil appStarts()
   }
 
