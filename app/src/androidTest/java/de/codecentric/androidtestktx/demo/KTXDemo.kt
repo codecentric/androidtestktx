@@ -17,7 +17,7 @@ class KTXDemo {
 
   @Test
   fun shouldFindViewById() {
-    mainRobot {
+    withMainRobot {
       //doNothing
     } verifyThat {
       mainButtonIsDisplayed()
@@ -26,7 +26,7 @@ class KTXDemo {
 
   @Test
   fun shouldFindViewByText() {
-    mainRobot {
+    withMainRobot {
       //do nothing
     } verifyThat {
       openListLabelIsDisplayed()
@@ -35,7 +35,7 @@ class KTXDemo {
 
   @Test
   fun shouldOpenListScreen() {
-    mainRobot {
+    withMainRobot {
       openList()
     } verifyThat {
       listScreenIsOpened()

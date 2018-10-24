@@ -3,11 +3,14 @@ package de.codecentric.androidtestktx.espresso.extensions
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.intent.matcher.IntentMatchers
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
 import kotlin.reflect.KClass
@@ -38,3 +41,26 @@ infix fun <T : Activity> KClass<T>.verifyThat(fn: Matcher<Intent>.() -> Unit) {
 infix fun Matcher<View>.verifyText(textFn: () -> String) {
   verifyThat { ViewAssertions.matches(withText(textFn())) }
 }
+
+
+infix fun ViewAction.into(matcher: Matcher<View>) {
+  Espresso.onView(matcher).perform(this)
+}
+
+infix fun ViewAction.onto(matcher: Matcher<View>) {
+  Espresso.onView(matcher).perform(this)
+}
+
+infix fun ViewAction.on(matcher: Matcher<View>) {
+  Espresso.onView(matcher).perform(this)
+}
+
+fun view(viewId: Int): Matcher<View> = ViewMatchers.withId(viewId)
+
+fun text(viewId: Int): Matcher<View> = view(viewId)
+
+fun field(viewId: Int): Matcher<View> = view(viewId)
+
+fun button(viewId: Int): Matcher<View> = view(viewId)
+
+fun text(text: String): Matcher<View> = withText(text)

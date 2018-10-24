@@ -173,3 +173,23 @@ fun UiDevice.dragRight(bottomPoint: Point, length: Int, durationMillis: Long = 2
     durationMillis.toSeconds() * stepsInOneSecond
   )
 }
+
+infix fun click.on(uiObject: UiObject) {
+  uiObject.click()
+}
+
+infix fun typeText.into(uiObject: UiObject) {
+  uiObject.text = this.text
+}
+
+fun view(id: Int): UiObject {
+  return device.findObject(byIdSelector(id))
+}
+
+fun text(id: Int): UiObject {
+  return device.findObject(byIdSelector(id))
+}
+
+fun button(id: Int): UiObject {
+  return device.findObject(byIdSelector(id))
+}

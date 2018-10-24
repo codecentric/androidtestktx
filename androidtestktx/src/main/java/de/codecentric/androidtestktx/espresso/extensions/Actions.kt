@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -20,9 +21,25 @@ import kotlin.reflect.KClass
 fun Matcher<View>.click(): ViewInteraction = Espresso.onView(this).perform(ViewActions.click())
 
 /**
+ * Sugar syntax for [ViewActions.click]
+ */
+val click: ViewAction get() = ViewActions.click()
+
+/**
  * Extension function for performing a [ViewActions.longClick] on current [Matcher].
  */
 fun Matcher<View>.longClick(): ViewInteraction = Espresso.onView(this).perform(ViewActions.longClick())
+
+/**
+ * Extension function for performing a [ViewActions.typeText] on current [Matcher]
+ */
+fun Matcher<View>.typeText(textToInput: String): ViewInteraction =
+  Espresso.onView(this).perform(ViewActions.typeText(textToInput))
+
+/**
+ * Sugar syntax for [ViewActions.typeText]
+ */
+fun typeText(text: String): ViewAction = ViewActions.typeText(text)
 
 /**
  * Extension function for performing a [ViewActions.swipeUp] on current [Matcher].

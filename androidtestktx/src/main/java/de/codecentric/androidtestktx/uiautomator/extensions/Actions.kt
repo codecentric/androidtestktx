@@ -11,6 +11,18 @@ import de.codecentric.androidtestktx.common.instrumentation
 import de.codecentric.androidtestktx.common.originalPackageName
 import de.codecentric.androidtestktx.common.seconds
 
+@Suppress("ClassName")
+object click
+
+@Suppress("ClassName")
+object typeText {
+  lateinit var text: String
+  operator fun invoke(text: String): typeText {
+    this.text = text
+    return this
+  }
+}
+
 /**
  * Moves the finger from the center of the screen to the top
  */

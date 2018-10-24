@@ -9,7 +9,7 @@ import de.codecentric.androidtestktx.uiautomator.extensions.itIsDisplayed
 import de.codecentric.androidtestktx.uiautomator.extensions.verifyThat
 import de.codecentric.androidtestktx.uiautomator.extensions.viewById
 
-fun mainRobot(fn: MainRobot.() -> Unit) = MainRobot().apply { fn() }
+fun withMainRobot(fn: MainRobot.() -> Unit) = MainRobot().apply { fn() }
 
 infix fun MainRobot.verifyThat(fn: MainRobotResult.() -> Unit) {
   val mainRobotResult = MainRobotResult()
