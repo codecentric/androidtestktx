@@ -15,6 +15,11 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+    id "com.github.dcendents.android-maven" version "2.1"
+}
+
 allprojects {
     repositories {
         google()
@@ -23,12 +28,15 @@ allprojects {
             url "https://maven.google.com"
         }
     }
+    tasks.withType(Javadoc).all {
+        enabled = false
+    }
 }
 
-task clean(type: Delete) {
+task customClean(type: Delete) {
     delete rootProject.buildDir
 }
-
+clean.dependsOn customClean
 
 ext {
     appCompatVer = "28.0.0"
@@ -36,4 +44,6 @@ ext {
     extTargetSdkVersion = "28"
     extMinSdkVersion = "21"
     extApplicationId = "de.codecentric.androidtestktx.demo"
+    extVersionCode = 284409000
+    extVersionName = "0.9.0"
 }

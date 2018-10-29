@@ -1,14 +1,38 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'androidtestktx'
+
+    publishedGroupId = 'de.codecentric'
+    libraryName = 'Android Test KTX'
+    artifact = 'androidtestktx'
+
+    libraryDescription = 'Kotlin DSL for Espresso and UiAutomator'
+
+    siteUrl = 'https://github.com/codecentric/androidtestktx'
+    gitUrl = 'https://github.com/codecentric/androidtestktx.git'
+
+    libraryVersion = '0.9.0'
+
+    developerId = 'bajicdusko'
+    developerName = 'Dusko Bajic'
+    developerEmail = 'bajicdusko@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion extCompileSdkVersion
 
     defaultConfig {
         minSdkVersion extMinSdkVersion
         targetSdkVersion extTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode extVersionCode
+        versionName extVersionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -39,3 +63,6 @@ dependencies {
     api 'androidx.test.uiautomator:uiautomator:2.2.0-beta02'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+apply from: 'https://raw.githubusercontent.com/bajicdusko/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/bajicdusko/JCenter/master/bintrayv1.gradle'
