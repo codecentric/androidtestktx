@@ -8,7 +8,7 @@ It is inteded to work well with **RobotPattern**, as the naming convention of th
 functions assume to have some sort of semantical context on the call site.
 
 This is a **Work In Progress**, and contributions are highly welcomed. For the 
-future plans of library development, please check the Wiki. 
+future plans of library development, please check the [Wiki](https://github.com/bajicdusko/androidtestktx/wiki). 
 
 Simple test example:
 
