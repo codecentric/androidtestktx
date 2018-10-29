@@ -83,6 +83,8 @@ class MainRobot {
         typeText("dummyUsername") into text(R.id.activityLoginEditTextUsername)
         typeText("dummyPassword") into text(R.id.activityLoginEditTextPassword)
         click on button(R.id.activityLoginBtnLogin)
+        
+        MainActivity::class verifyThat { itIsDisplayed() }
     }
 }
 ```
