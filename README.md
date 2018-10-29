@@ -10,7 +10,7 @@ It is inteded to work well with **RobotPattern**, as the naming convention of th
 functions assume to have some sort of semantical context on the call site.
 
 This is a **Work In Progress**, and contributions are highly welcomed. For the 
-future plans of library development, please check the [Wiki](https://github.com/bajicdusko/androidtestktx/wiki). 
+future plans of library development, please check the [Wiki](https://github.com/codecentric/androidtestktx/wiki). 
 
 Simple test example:
 
@@ -113,4 +113,4 @@ allprojects {
 
 # LICENSE
 
-[Apache 2.0](https://github.com/bajicdusko/androidtestktx/blob/master/LICENSE)
+[Apache 2.0](https://github.com/codecentric/androidtestktx/blob/master/LICENSE)
