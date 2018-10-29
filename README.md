@@ -86,3 +86,7 @@ class MainRobot {
     }
 }
 ```
+
+LICENSE
+
+Apache 2.0
