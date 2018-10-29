@@ -1,5 +1,7 @@
 # Android Test KTX
 
+[![Version](https://api.bintray.com/packages/bajicdusko/maven/androidtestktx/images/download.svg)](https://bintray.com/bajicdusko/maven/androidtestktx/_latestVersion)
+
 This library is a collection of Kotlin extension and infix functions made to increase 
 the readability and decrease the boilerplate of `Espresso` and `UIAutomator` matchers
 and actions.
