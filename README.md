@@ -87,6 +87,6 @@ class MainRobot {
 }
 ```
 
-LICENSE
+# LICENSE
 
-Apache 2.0
+[Apache 2.0](https://github.com/bajicdusko/androidtestktx/blob/master/LICENSE)
