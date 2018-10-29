@@ -91,6 +91,24 @@ class MainRobot {
 }
 ```
 
+# Usage
+
+In the `build.gradle` file of your app module, put this line into the dependencies:
+```
+androidTestImplementation 'de.codecentric:androidtestktx:0.9.0'
+```
+
+Make sure that in the project level `build.gradle` file, you're using the JCenter as repository source:
+
+```
+allprojects {
+  repositories {
+    ...
+    jcenter()
+  }
+}
+```
+
 # LICENSE
 
 [Apache 2.0](https://github.com/bajicdusko/androidtestktx/blob/master/LICENSE)
