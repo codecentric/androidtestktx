@@ -25,8 +25,25 @@ fun shouldLoginUser_whenStartingTheAppForTheFirstTime() {
 }
 ```
 
-##### Show me the code
+### Show me the code
+
 In order to login the user properly, we have to find a login button, and username and password fields.
+
+**Unified Espresso/UIAutomator syntax - KTX**
+```kotlin
+class MainRobot {
+    
+    @Test
+    fun shouldLoginDemoUser(){
+        typeText("dummyUsername") into text(R.id.activityLoginEditTextUsername)
+        typeText("dummyPassword") into text(R.id.activityLoginEditTextPassword)
+        click on button(R.id.activityLoginBtnLogin)
+        
+        MainActivity::class verifyThat { itIsDisplayed() }
+    }
+}
+```
+
 In the old fashion way, we'd do something like this:
 
 **Espresso syntax**
@@ -70,21 +87,6 @@ class MainRobot {
         )
         val loginButton = uiDevice.findObject(loginButtonSelector)
         loginButton.click()
-    }
-}
-```
-
-**Unified Espresso/UIAutomator syntax - KTX**
-```kotlin
-class MainRobot {
-    
-    @Test
-    fun shouldLoginDemoUser(){
-        typeText("dummyUsername") into text(R.id.activityLoginEditTextUsername)
-        typeText("dummyPassword") into text(R.id.activityLoginEditTextPassword)
-        click on button(R.id.activityLoginBtnLogin)
-        
-        MainActivity::class verifyThat { itIsDisplayed() }
     }
 }
 ```
