@@ -10,7 +10,7 @@ It is inteded to work well with **RobotPattern**, as the naming convention of th
 functions assume to have some sort of semantical context on the call site.
 
 This is a **Work In Progress**, and contributions are highly welcomed. For the 
-future plans of library development, please check the [Wiki](https://github.com/codecentric/androidtestktx/wiki). 
+future plans of library development, please check the [Wiki](https://github.com/bajicdusko/androidtestktx/wiki). 
 
 Simple test example:
 
@@ -33,7 +33,7 @@ In order to login the user properly, we have to find a login button, and usernam
 
 **Unified Espresso/UIAutomator syntax - KTX**
 ```kotlin
-class MainRobot {
+class MainActivityTest {
     
     @Test
     fun shouldLoginDemoUser(){
@@ -50,20 +50,22 @@ In the old fashion way, we'd do something like this:
 
 **Espresso syntax**
 ```kotlin
-class MainRobot {
+class MainActivityTest {
     
     @Test
     fun shouldLoginDemoUser(){
         onView(withId(R.id.activityLoginEditTextUsername)).perform(typeText("dummyUsername"))
         onView(withId(R.id.activityLoginEditTextPassword)).perform(typeText("dummyPassword"))
         onView(withId(R.id.activityLoginBtnLogin)).perform(click())
+        
+        Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
 }
 ```
 
 **UIAutomator syntax**
 ```kotlin
-class MainRobot {
+class MainActivityTest {
     
     @Test
     fun shouldLoginDemoUser(){
@@ -89,6 +91,8 @@ class MainRobot {
         )
         val loginButton = uiDevice.findObject(loginButtonSelector)
         loginButton.click()
+        
+        Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
 }
 ```
@@ -113,4 +117,4 @@ allprojects {
 
 # LICENSE
 
-[Apache 2.0](https://github.com/codecentric/androidtestktx/blob/master/LICENSE)
+[Apache 2.0](https://github.com/bajicdusko/androidtestktx/blob/master/LICENSE)
