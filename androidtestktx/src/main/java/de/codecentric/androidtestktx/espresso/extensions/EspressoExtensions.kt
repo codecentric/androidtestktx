@@ -55,6 +55,10 @@ infix fun ViewAction.on(matcher: Matcher<View>) {
   Espresso.onView(matcher).perform(this)
 }
 
+infix fun ViewAction.from(matcher: Matcher<View>) {
+  Espresso.onView(matcher).perform(this)
+}
+
 fun view(viewId: Int): Matcher<View> = ViewMatchers.withId(viewId)
 
 fun text(viewId: Int): Matcher<View> = view(viewId)

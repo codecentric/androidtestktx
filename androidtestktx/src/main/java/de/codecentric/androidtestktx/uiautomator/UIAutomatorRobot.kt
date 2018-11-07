@@ -9,7 +9,7 @@ import de.codecentric.androidtestktx.uiautomator.extensions.viewByText
 import de.codecentric.androidtestktx.uiautomator.extensions.waitUntil
 import kotlin.reflect.KClass
 
-abstract class UiAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartActivity: Boolean) {
+abstract class UIAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartActivity: Boolean) {
 
   init {
     if (autoStartActivity) {
@@ -34,7 +34,7 @@ abstract class UiAutomatorRobot<T : Activity>(val kClass: KClass<T>, autoStartAc
   }
 
   private fun closeDialogWithButton(buttonText: String) {
-    val button = viewByText { buttonText }
+    val button = viewByText(buttonText)
     if (button.exists()) {
       button.click()
     }
