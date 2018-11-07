@@ -1,3 +1,5 @@
+@file:Suppress("ClassName")
+
 package de.codecentric.androidtestktx.uiautomator.extensions
 
 import android.Manifest.permission
@@ -11,10 +13,11 @@ import de.codecentric.androidtestktx.common.instrumentation
 import de.codecentric.androidtestktx.common.originalPackageName
 import de.codecentric.androidtestktx.common.seconds
 
-@Suppress("ClassName")
+/**
+ * Dummy click object used for the UIAutomator infix notation.
+ */
 object click
 
-@Suppress("ClassName")
 object typeText {
   lateinit var text: String
   operator fun invoke(text: String): typeText {
@@ -22,6 +25,23 @@ object typeText {
     return this
   }
 }
+
+/**
+ * Dummy clearText object used for the UIAutomator infix notation.
+ */
+object clearText
+
+/**
+ * Dummy replaceText object used for the UIAutomator infix notation.
+ */
+object replaceText {
+  lateinit var text: String
+  operator fun invoke(text: String): replaceText {
+    this.text = text
+    return this
+  }
+}
+
 
 /**
  * Moves the finger from the center of the screen to the top
@@ -127,7 +147,7 @@ fun UiObject.pressAndHoldScrollable(durationMillis: Long = 2.seconds) {
  * Function waits to find and element with unexisting text. Effectively, function just wait to timeout.
  */
 infix fun UiDevice.waitFor(milliseconds: Long) {
-  viewByText { "xyzabc" }.waitForExists(milliseconds)
+  viewByText("xyzabc").waitForExists(milliseconds)
 }
 
 /**

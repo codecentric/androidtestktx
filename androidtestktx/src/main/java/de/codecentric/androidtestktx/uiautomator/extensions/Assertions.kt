@@ -50,3 +50,10 @@ fun UiObject.itIsChecked() {
 fun UiObject.itIsUnchecked() {
   assertFalse(isChecked)
 }
+
+/**
+ * Asserts that text field doesn't contain any characters.
+ */
+fun UiObject.textFieldIsEmpty() {
+  assertTrue(this.text.isEmpty())
+}

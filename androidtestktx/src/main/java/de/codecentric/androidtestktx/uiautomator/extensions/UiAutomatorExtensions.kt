@@ -49,6 +49,8 @@ fun byIdSelector(viewId: Int): UiSelector = UiSelector().resourceId(resource nam
 /**
  * Selector used for finding the UIObject's by text value fetched from the string resources.
  * Strings are resolved on currently active localization.
+ *
+ * Important: Function is case sensitive.
  */
 fun byTextSelector(@StringRes stringResId: Int): UiSelector = UiSelector().text(appContext stringOf stringResId)
 
@@ -60,30 +62,26 @@ fun appStarts(): BySelector = By.pkg(appContext.originalPackageName).depth(0)
 /**
  * UIDevice extension function, which is getting the UIObject by utilizing the [byIdSelector] with id value provided by [viewId] lambda
  */
-infix fun UiDevice.objectById(viewId: () -> Int): UiObject = findObject(
-  byIdSelector(
-    viewId()
-  )
+infix fun UiDevice.objectById(viewId: Int): UiObject = findObject(
+  byIdSelector(viewId)
 )
 
 /**
  * UIDevice extension function, which is getting the UIObject by utilizing the [byTextSelector] with text value provided by [stringResId] lambda
  */
-infix fun UiDevice.objectByTextResource(@IdRes stringResId: () -> Int): UiObject = findObject(
-  byTextSelector(
-    stringResId()
-  )
+infix fun UiDevice.objectByTextResource(@StringRes stringResId: Int): UiObject = findObject(
+  byTextSelector(stringResId)
 )
 
 /**
  * UIDevice extension function, which is getting the UIObject by selecting the component with text value provided by [text] lambda
  */
-infix fun UiDevice.objectByText(text: () -> String): UiObject = findObject(UiSelector().text(text()))
+infix fun UiDevice.objectByText(text: String): UiObject = findObject(UiSelector().text(text))
 
 /**
  * UIDevice extension function, which is getting the UIObject by selecting the component that contains text value provided by [text] lambda
  */
-infix fun UiDevice.objectContainingText(text: () -> String): UiObject = findObject(UiSelector().textContains(text()))
+infix fun UiDevice.objectContainingText(text: String): UiObject = findObject(UiSelector().textContains(text))
 
 /**
  * UIDevice extension function, which is getting the UIObject by selecting the component with [KClass] type provided by [kClass] lambda
@@ -179,6 +177,15 @@ infix fun click.on(uiObject: UiObject) {
 }
 
 infix fun typeText.into(uiObject: UiObject) {
+  uiObject.text = this.text
+}
+
+infix fun clearText.from(uiObject: UiObject) {
+  uiObject.clearTextField()
+}
+
+infix fun replaceText.on(uiObject: UiObject){
+  uiObject.clearTextField()
   uiObject.text = this.text
 }
 
