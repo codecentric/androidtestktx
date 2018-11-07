@@ -66,3 +66,8 @@ fun isDescendantOf(parent: Matcher<View>): ViewAssertion = ViewAssertions.matche
 fun Matcher<Intent>.itIsDisplayed() {
   Intents.intended(this)
 }
+
+/**
+ * Asserts that text field doesn't contain any characters.
+ */
+fun textFieldIsEmpty(): ViewAssertion = ViewAssertions.matches(ViewMatchers.withText(""))

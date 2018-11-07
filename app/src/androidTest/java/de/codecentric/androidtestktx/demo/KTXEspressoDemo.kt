@@ -8,7 +8,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class KTXDemo {
+class KTXEspressoDemo {
 
   @Before
   fun setUp() {
@@ -17,7 +17,7 @@ class KTXDemo {
 
   @Test
   fun shouldFindViewById() {
-    withMainRobot {
+    withMainEspressoRobot {
       //doNothing
     } verifyThat {
       mainButtonIsDisplayed()
@@ -26,7 +26,7 @@ class KTXDemo {
 
   @Test
   fun shouldFindViewByText() {
-    withMainRobot {
+    withMainEspressoRobot {
       //do nothing
     } verifyThat {
       openListLabelIsDisplayed()
@@ -35,10 +35,41 @@ class KTXDemo {
 
   @Test
   fun shouldOpenListScreen() {
-    withMainRobot {
+    withMainEspressoRobot {
       openList()
     } verifyThat {
       listScreenIsOpened()
+    }
+  }
+
+  @Test
+  fun shouldTypeIntoTheField(){
+    withMainEspressoRobot {
+      inputText()
+    } verifyThat {
+      textIsEnteredCorrectly()
+    }
+  }
+
+  @Test
+  fun shouldClearTheTextFromInputField(){
+    withMainEspressoRobot {
+      inputText()
+    } andThen {
+      clearText()
+    } verifyThat {
+      textIsClearedInTheInputField()
+    }
+  }
+
+  @Test
+  fun shouldReplaceTheTextInTheInputField(){
+    withMainEspressoRobot {
+      inputText()
+    } andThen {
+      replaceTextInField()
+    } verifyThat {
+      textIsEnteredCorrectly(REPLACE_TEXT)
     }
   }
 

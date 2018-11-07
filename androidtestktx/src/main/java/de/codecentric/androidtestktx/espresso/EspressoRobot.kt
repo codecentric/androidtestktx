@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.test.rule.ActivityTestRule
 
-open class EspressoRobot<T : Activity>(val activityTestRule: ActivityTestRule<T>, autoStart: Boolean) {
+open class EspressoRobot<T : Activity>(protected val activityTestRule: ActivityTestRule<T>, autoStart: Boolean) {
   init {
     if (autoStart) {
       launchActivity()

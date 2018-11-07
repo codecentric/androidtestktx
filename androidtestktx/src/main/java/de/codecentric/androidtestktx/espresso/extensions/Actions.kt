@@ -42,6 +42,27 @@ fun Matcher<View>.typeText(textToInput: String): ViewInteraction =
 fun typeText(text: String): ViewAction = ViewActions.typeText(text)
 
 /**
+ * Extension function for performing a [ViewActions.clearText] on current [Matcher]
+ */
+fun Matcher<View>.clearText(): ViewInteraction = Espresso.onView(this).perform(ViewActions.clearText())
+
+/**
+ * Sugar syntax for [ViewActions.clearText]
+ */
+val clearText: ViewAction = ViewActions.clearText()
+
+/**
+ * Extension function for performing a [ViewActions.replaceText] on current [Matcher]
+ */
+fun Matcher<View>.replaceText(textToInput: String): ViewInteraction =
+    Espresso.onView(this).perform(ViewActions.replaceText(textToInput))
+
+/**
+ * Sugar syntax for [ViewActions.replaceText]
+ */
+fun replaceText(textToInput: String): ViewAction = ViewActions.replaceText(textToInput)
+
+/**
  * Extension function for performing a [ViewActions.swipeUp] on current [Matcher].
  */
 fun Matcher<View>.scroll(): ViewInteraction = Espresso.onView(this).perform(ViewActions.swipeUp())
