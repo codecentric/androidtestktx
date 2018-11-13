@@ -85,7 +85,7 @@ fun Matcher<View>.scrollUp() {
  *
  * @param textMatcher matcher for a specific list item.
  */
-infix fun Matcher<View>.selectListItemByText(textMatcher: () -> Matcher<Any>): ViewInteraction =
+infix fun Matcher<View>.selectListItemByText(textMatcher: () -> Matcher<out Any>): ViewInteraction =
   Espresso.onData(textMatcher()).inAdapterView(this).perform(ViewActions.click())
 
 /**
